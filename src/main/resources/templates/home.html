@@ -38,7 +38,7 @@
         $("#password-login").removeClass("active");
         $("#logout").addClass("active");
         // assumes we are not part of SSO so just logout of local session
-        window.location = "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}/logout";
+        window.location = "/logout";
     });
 </script>
 </body>
