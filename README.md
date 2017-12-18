@@ -44,7 +44,7 @@ The server will be accessible on https://localhost:8080/portal/home.
 
 ### Online Demo
 
-A personal online demo at: http://91.204.208.170:8080/portal/home
+A personal online demo at: http://91.204.208.215:8080/portal/home
 
 ### Limitations
 
