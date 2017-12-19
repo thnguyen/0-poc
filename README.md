@@ -51,7 +51,6 @@ A personal online demo at: http://91.204.208.215:8080/portal/home
 For demonstration purpose, many checks have been ignored such as:
 1. No required check for both First Name and Family Name on profile update page. The assumption is that both fields will be filled.
 1. Management API Token has expiration time. In real world cases, token should be programmatically acquired.
-1. Rule logic assumes all or nothing approach that either all given_name, familyname, user_metadata.given_name, user_metadata.family_name are filled. So as long as name pair is available in root or in user_metadata.
 1. Management API doesn't allow modification of root given_name and family_name. Therefore, user.user_metadata is used.
 
 ## Author
