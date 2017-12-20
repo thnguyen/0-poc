@@ -24,8 +24,8 @@ public class HomeController {
     @RequestMapping(value = "/portal/home", method = RequestMethod.GET)
     protected String home(final Model model, final HttpServletRequest req) {
         logger.info("Home page");
-        DecodedJWT jwt = (DecodedJWT) SessionUtils.get(req, "decodedIdToken");
-        model.addAttribute("name", jwt.getClaim("name").asString());
+        String idToken = (String) SessionUtils.get(req, "idToken");
+        model.addAttribute("name", idToken);
         return "home";
     }
 

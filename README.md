@@ -11,13 +11,14 @@ This POC demonstrates how to use Auth0 to perform progressive profile. It is bui
 1. Add the URL that will be called on logout to the Allowed Logout URLs. i.e.: `http://localhost:8080/logout`.
 1. Copy the `Domain`, `Client ID` and `Client Secret` values at the top of the page and use them to configure the Java Application.
 1. Follow [Auth0 Management API Dashboard](https://auth0.com/docs/api/management/v2/tokens#get-a-token-manually) to create an API token.
-1. On the [Auth0 Dashboard Rule](https://manage.auth0.com/#/rules) create a rule using the javascript content at src/main/resources/rules/enable_progressive_profile.js (you can name the rule as "enable progressive profile").
+1. On the [Auth0 Dashboard Rule](https://manage.auth0.com/#/rules) create a rule using the javascript content at src/main/resources/rules/enable_progressive_profile.js (you can name the rule as "enable progressive profile"). Create rule configuration properties to match with Java application properties: CLIENT_ID, CLIENT_SECRET, ISSUER, PROFILE_URL
 1. (Optional) on the [Auth0 Dashboard Connections -> Social](https://manage.auth0.com/#/connections/social), enable Google and Facebook and follow the prompt to add social login/signup.
 
 ### Java Application
 Set the client values in the `src/main/resources/auth0.properties` file. They are read by the `AppConfig` class.
 
 ```xml
+com.auth0.issuer: {YOUR_ISSUER_USED_IN_RULE}
 com.auth0.domain: {YOUR_AUTH0_DOMAIN}
 com.auth0.clientId: {YOUR_AUTH0_CLIENT_ID}
 com.auth0.clientSecret: {YOUR_AUTH0_CLIENT_SECRET}

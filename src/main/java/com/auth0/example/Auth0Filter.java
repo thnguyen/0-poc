@@ -25,7 +25,7 @@ public class Auth0Filter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         String accessToken = (String) SessionUtils.get(req, "accessToken");
-        DecodedJWT idToken = (DecodedJWT) SessionUtils.get(req, "decodedIdToken"); // responseType = code id_token
+        String idToken = (String) SessionUtils.get(req, "idToken"); // responseType = code id_token
         Boolean profileCompleted = (Boolean) SessionUtils.get(req, "profileCompleted");
 
         if (idToken == null) {
@@ -34,12 +34,6 @@ public class Auth0Filter implements Filter {
         } else if (profileCompleted != null) {
             next.doFilter(request, response);
             return;
-        } else {
-            String profileStatus = idToken.getClaim("https://hiddencharm.auth0.com/profile").asString();
-            if ("incomplete".equals(profileStatus)) {
-                res.sendRedirect("/profile");
-                return;
-            }
         }
         next.doFilter(request, response);
     }

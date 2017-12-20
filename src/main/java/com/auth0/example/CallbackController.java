@@ -45,13 +45,7 @@ public class CallbackController {
         try {
             Tokens tokens = controller.handle(req);
             SessionUtils.set(req, "accessToken", tokens.getAccessToken());
-            String idToken = tokens.getIdToken();
-            try {
-                DecodedJWT jwt = JWT.decode(idToken);
-                SessionUtils.set(req, "decodedIdToken", jwt);
-            } catch (JWTDecodeException exception){
-                //Invalid token
-            }
+            SessionUtils.set(req, "idToken", tokens.getIdToken());
             res.sendRedirect(redirectOnSuccess);
         } catch (IdentityVerificationException e) {
             e.printStackTrace();
