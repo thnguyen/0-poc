@@ -71,7 +71,6 @@ public class ProfileController {
         String state = (String) SessionUtils.get(req, "state");
         try {
             DecodedJWT jwt = JWT.decode(profileToken);
-            SessionUtils.set(req, "decodedIdToken", jwt);
             com.auth0.json.mgmt.users.User data = new com.auth0.json.mgmt.users.User();
             Map<String, Object> meta = new HashMap<>();
             meta.put("given_name", profile.getFirstName());
@@ -79,7 +78,6 @@ public class ProfileController {
             data.setUserMetadata(meta);
             Request updateReq = apiClient.users().update( jwt.getSubject(), data);
             updateReq.execute();
-            SessionUtils.set(req, "profileCompleted", Boolean.TRUE);
             Algorithm algorithm = Algorithm.HMAC256(clientSecret);
             String responseToken = JWT.create()
                     .withIssuer(issuer)

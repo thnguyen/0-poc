@@ -27,9 +27,9 @@ dependencies {
     compile 'com.auth0:auth0:1.5.0'
     compile 'org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf:1.5.6.RELEASE'
+    compile 'org.springframework.boot:spring-boot-devtools:1.5.6.RELEASE'
     runtime 'org.springframework.boot:spring-boot-starter-tomcat:1.5.6.RELEASE'
-    runtime 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.20'
-    runtime 'javax.servlet:jstl:1.2'
+runtime 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.20'
 
     testCompile 'junit:junit:4.12'
 }

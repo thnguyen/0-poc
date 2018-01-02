@@ -6,8 +6,15 @@ package com.auth0.example;
  */
 public class Profile {
 
+    private String email;
     private String firstName;
     private String familyName;
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFirstName() {
         return firstName;

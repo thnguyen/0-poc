@@ -3,9 +3,6 @@ package com.auth0.example;
 import com.auth0.IdentityVerificationException;
 import com.auth0.SessionUtils;
 import com.auth0.Tokens;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -22,7 +19,7 @@ import java.io.IOException;
 public class CallbackController {
 
     @Autowired
-    private AuthController controller;
+    private AuthService service;
     private final String redirectOnFail;
     private final String redirectOnSuccess;
 
@@ -43,7 +40,7 @@ public class CallbackController {
 
     private void handle(HttpServletRequest req, HttpServletResponse res) throws IOException {
         try {
-            Tokens tokens = controller.handle(req);
+            Tokens tokens = service.handle(req);
             SessionUtils.set(req, "accessToken", tokens.getAccessToken());
             SessionUtils.set(req, "idToken", tokens.getIdToken());
             res.sendRedirect(redirectOnSuccess);

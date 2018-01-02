@@ -21,17 +21,21 @@
                 <li id="logout"><a href="#">Logout</a></li>
             </ul>
         </nav>
-        <h3 class="text-muted">Hung POC</h3>
+        <h3 class="text-muted">Profile PoC</h3>
     </div>
-    <div class="jumbotron">
-        <h3 th:text="'Hello, your id_token: ' + ${name}">Hello ${name}</h3>
+    <div class="row">
+        <h3 th:text="'Hello ' + ${name}">Hello ${name}</h3>
+    </div>
+    <div class="row">
+        <pre id="json-data"></pre>
     </div>
     <footer class="footer">
-        <p> &copy; 2017 Hung PoC</p>
+        <p> &copy; 2017 Profile PoC</p>
     </footer>
 
 </div>
-<script type="text/javascript">
+<script th:inline="javascript">
+/*<![CDATA[*/
     $("#logout").click(function(e) {
         e.preventDefault();
         $("#home").removeClass("active");
@@ -40,6 +44,9 @@
         // assumes we are not part of SSO so just logout of local session
         window.location = "/logout";
     });
+    var data = [[${payload}]];
+    $("#json-data").html(JSON.stringify(JSON.parse(atob(data)), undefined, 2));
+/*]]>*/
 </script>
 </body>
 </html>

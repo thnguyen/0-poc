@@ -26,13 +26,9 @@ public class Auth0Filter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         String accessToken = (String) SessionUtils.get(req, "accessToken");
         String idToken = (String) SessionUtils.get(req, "idToken"); // responseType = code id_token
-        Boolean profileCompleted = (Boolean) SessionUtils.get(req, "profileCompleted");
 
-        if (idToken == null) {
+        if (accessToken == null && idToken == null) {
             res.sendRedirect("/login");
-            return;
-        } else if (profileCompleted != null) {
-            next.doFilter(request, response);
             return;
         }
         next.doFilter(request, response);

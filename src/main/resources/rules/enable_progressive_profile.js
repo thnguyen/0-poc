@@ -44,7 +44,7 @@ function (user, context, callback) {
       } else if (decoded.sub !== user.user_id) {
         return callback(new UnauthorizedError("Token does not match the current user"));
       } else if (!decoded.profileCompleted) {
-        return callback(new UnauthorizedError("Password change was not confirmed"));
+        return callback(new UnauthorizedError("Profile change was not confirmed"));
       } else {
         // User's password has been changed successfully
         return callback(null, user, context);

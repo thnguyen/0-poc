@@ -17,33 +17,32 @@
         <div class="header clearfix">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li class="active" id="home"><a href="#">Home</a></li>
-                    <li id="logout"><a href="#">Logout</a></li>
                 </ul>
             </nav>
+            <h3 class="text-muted">Profile POC</h3>
         </div>
-        <div class="jumbotron">
-            <h3>Please complete your profile before continue !</h3>
+        <div class="row">
+            <h3>Please complete your profile</h3>
+            <form class="form-horizontal" action="#" th:action="@{/profile}" th:object="${profile}" method="post">
+                <div class="form-group">
+                    <label for="inputFirstName" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" th:field="*{firstName}" class="form-control" id="inputFirstName" placeholder="First Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputFamilyName" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="text" th:field="*{familyName}" class="form-control" id="inputFamilyName" placeholder="Family Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Update</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <form class="form-horizontal" action="#" th:action="@{/profile}" th:object="${profile}" method="post">
-            <div class="form-group">
-                <label for="inputFirstName" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="text" th:field="*{firstName}" class="form-control" id="inputFirstName" placeholder="First Name" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputFamilyName" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
-                    <input type="text" th:field="*{familyName}" class="form-control" id="inputFamilyName" placeholder="Family Name" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Update</button>
-                </div>
-            </div>
-        </form>
         <footer class="footer">
             <p> &copy; 2017 Profile PoC</p>
         </footer>

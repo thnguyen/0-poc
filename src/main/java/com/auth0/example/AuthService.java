@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 @Component
-public class AuthController {
+public class AuthService {
 
     private final AuthenticationController controller;
     private final String userInfoAudience;
 
     @Autowired
-    public AuthController(AppConfig config) {
+    public AuthService(AppConfig config) {
         controller = AuthenticationController.newBuilder(config.getDomain(), config.getClientId(), config.getClientSecret())
                 .withResponseType("code id_token")
                 .build();
